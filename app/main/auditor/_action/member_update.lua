@@ -103,6 +103,7 @@ else
 end
 
 -- Check user unit_group_id
+--[[
 local unit_group_id = param.get("unit_group_id",atom.integer)
 if unit_group_id then
   member.unit_group_id = unit_group_id
@@ -112,6 +113,7 @@ else
     return false
   end
 end
+--]]
 
 --[[
   Sensitive data 

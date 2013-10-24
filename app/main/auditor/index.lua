@@ -11,7 +11,7 @@ ui.container{ attr = { class = "row-fluid" }, content = function()
 
       ui.container{ attr = { class  = "inline-block", style = "margin: 5px;" }, content = function()
         ui.link{
-          attr = { class="btn btn-primary btn-large table-cell fixclick"  },
+          attr = { class="btn btn-primary btn-large table-cell"  },
           module = "auditor",
           view = "download",
           content = function()
