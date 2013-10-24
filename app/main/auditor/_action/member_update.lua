@@ -113,10 +113,9 @@ end
 local region = param.get("regions")
 local province = param.get("provinces")
 local city = param.get("cities")
-local location = region.." "..province.." "..city
 
-if #region >= 2 and #province >=2 and #city>=2 then
- member_data.location=location
+if region and province and city and #region >= 2 and #province >=2 and #city>=2 then
+ member_data.location=region.." "..province.." "..city
 else
   slot.put_into("error", _"Region/Province/City data are incomplete!")
   return false
