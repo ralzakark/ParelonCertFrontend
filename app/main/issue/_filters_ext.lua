@@ -1,4 +1,3 @@
-local gui_preset=db:query('SELECT gui_preset FROM system_setting')[1][1] or 'default'
 local state = param.get("state")
 local orderby = param.get("orderby") or ""
 local desc =  param.get("desc", atom.boolean)

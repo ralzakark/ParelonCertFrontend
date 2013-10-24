@@ -1,5 +1,4 @@
 slot.set_layout("custom")
-local gui_preset=db:query('SELECT gui_preset FROM system_setting')[1][1] or 'default'
 
 local state = param.get("state") or "any"
 local scope = param.get("scope") or "all_units"

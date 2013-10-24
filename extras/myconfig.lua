@@ -9,6 +9,9 @@ config.instance_name = "Parlamento Elettronico Movimento Cinque Stelle"
 
 -- Information about service provider (HTML)
 -- ------------------------------------------------------------------------
+
+gui_preset="custom"
+
 config.app_service_provider = ""
 
 config.gui_preset = {

@@ -1,7 +1,6 @@
 slot.set_layout("custom")
 
 local area = Area:by_id(param.get_id())
-local gui_preset=db:query('SELECT gui_preset FROM system_setting')[1][1] or 'default'
 
 if not area then
   slot.put_into("error", "Please provide a valid area id")

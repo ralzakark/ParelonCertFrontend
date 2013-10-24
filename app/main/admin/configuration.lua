@@ -1,7 +1,5 @@
 ui.title(_"Configuration")
 
-local gui_preset=db:query('SELECT gui_preset FROM system_setting')[1][1]
-
 local guis = {
   { id = 0, name = "<select gui_preset>" }
 }

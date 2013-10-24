@@ -3,7 +3,6 @@ slot.set_layout("custom")
 local unit_id = param.get_id()
 trace.debug("unit_id="..unit_id)
 local filter = param.get("filter")
-local gui_preset=db:query('SELECT gui_preset FROM system_setting')[1][1] or 'default'
 
 if not app.session.member_id then
   return false
