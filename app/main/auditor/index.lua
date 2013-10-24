@@ -85,28 +85,6 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
                 },
                 {
                   field_attr = { style = "padding-left: 5px;padding-right: 5px;border: 1px solid black;" },
-                  label = _"State",
-                  content = function(record)
-                    if not record.activated then
-                      ui.field.text{ value = "not activated" }
-                    elseif not record.active then
-                      ui.field.text{ value = "inactive" }
-                    else
-                      ui.field.text{ value = "active" }
-                    end
-                  end
-                },
-                {
-                  field_attr = { style = "padding-left: 5px;padding-right: 5px;border: 1px solid black;" },
-                  label = _"Locked?",
-                  content = function(record)
-                    if record.locked then
-                      ui.field.text{ value = "locked" }
-                    end
-                  end
-                },
-                {
-                  field_attr = { style = "padding-left: 5px;padding-right: 5px;border: 1px solid black;" },
                   label = _"Actions",
                   content = function(record)
                     ui.link{

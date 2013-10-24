@@ -317,32 +317,6 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
           selected_record = param.get("unit_group_id",atom.integer),
           label_attr={class="auditor_input_label"}
         }
-        --[[
-        ui.field.text{
-          record = member,
-          label_attr={class="auditor_input_label"},
-          attr={class="auditor_input",placeholder=_"Municipality ID"},
-          label = _"Unit",
-          name = "unit_group_id",
-          value = param.get("unit_group_id",atom.integer)
-        }
-        --]]
-        
-
-        if not member or not member.activated then
-          ui.field.boolean{label_attr={class="auditor_input_label"},  label = _"Send invite?", name = "invite_member" }
-        end
-        
-        if member and member.activated then
-          ui.field.boolean{label_attr={class="auditor_input_label"},  label = _"Lock member?", name = "locked" }
-        end
-        --[[
-        ui.field.boolean{ 
-          label_attr={class="auditor_input_label"},
-          label = _"Member inactive?", name = "deactivate",
-          readonly = member and member.active, value = member and member.active == false
-        }
-        --]]
 
         ui.container{ attr = { class = "row-fluid text-center spaceline2" }, content = function()
           ui.container{ attr = { class = "span6 offset3" }, content = function()

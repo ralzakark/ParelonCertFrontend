@@ -4,61 +4,6 @@ ui.tag{ tag = "ul", attr = {id="menu_dropdown", class="dropdown-menu"}, content 
     ui.tag{ tag = "li", content = function()
 
       ui.link{
-        text = _"Show profile",
-        module = "member",
-        view = "show",
-        id = app.session.member_id
-      }
-      
-    end }
-    
-    ui.tag{ tag = "li", content = function()
-
-      ui.link{
-        content = function()
-            slot.put(_"Edit profile")
-        end,
-        module = "member",
-        view = "edit"
-      }
-
-    end }
-    
-    ui.tag{ tag = "li", content = function()
-
-      ui.link{
-        content = function()
-            slot.put(_"Upload avatar/photo")
-        end,
-        module = "member",
-        view = "edit_images"
-      }
-
-    end }
-      
-    ui.tag{ tag = "li", content = function()
-
-      ui.link{
-        content = _"Contacts",
-        module = 'contact',
-        view   = 'list'
-      }
-
-    end }
-    
-    ui.tag{ tag = "li", content = function()
-
-      ui.link{
-        text   = _"Settings",
-        module = "member",
-        view = "settings"
-      }
-
-    end }
-    
-    ui.tag{ tag = "li", content = function()
-
-      ui.link{
         text   = _"Logout",
         module = 'index',
         action = 'logout',

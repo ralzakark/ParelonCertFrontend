@@ -43,7 +43,8 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
     ui.container{ attr = { class = "row-fluid text-center"}, content = function()
       ui.container{ attr = { class = "inline-block text-left"}, content = function()
         ui.heading{level=5,content= function()
-          slot.put("Scansioni obbligatorie da caricare:",
+          slot.put("<strong>Scansioni obbligatorie da caricare:</strong>",
+            "</br>",
             "<ul>",
             "<li>Documento d'identit&agrave (fronte)</li>",
             "<li>Documento d'identit&agrave (retro)</li>",
@@ -56,7 +57,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
     ui.form{
       record = app.session.member,
       attr = { 
-        class = "vertical spaceline2",
+        class = "vertical spaceline3",
         enctype = 'multipart/form-data'
       },
       module = "auditor",
@@ -70,27 +71,17 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         }
       },
       content = function()
-        --[[
-        execute.view{
-          module = "member_image",
-          view = "_show",
-          params = {
-            member = app.session.member, 
-            image_type = "avatar"
-          }
-        }
-        --]]
         -- 'id_front','id_rear','id_picture','nin','health_insurance'
         ui.field.hidden{ name = "member_id", value = member_id }
-        ui.image{ attr={class="idcard_scan"}, module = "idcard_scan", view = "show", id = member_id, params = { scan_type = "id_front" } }
+        ui.image{ attr={class="idcard_scan"}, module = "auditor", view = "idcard_show", id = member_id, params = { scan_type = "id_front" } }
         ui.field.image{ field_name = "id_front", label = _"Idcard scan (front)" }
-        ui.image{ attr={class="idcard_scan spaceline3"}, module = "idcard_scan", view = "show", id = member_id, params = { scan_type = "id_rear" } }
+        ui.image{ attr={class="idcard_scan spaceline3"}, module = "auditor", view = "idcard_show", id = member_id, params = { scan_type = "id_rear" } }
         ui.field.image{ field_name = "id_rear", label = _"Idcard scan (rear)" }
-        ui.image{ attr={class="idcard_scan spaceline3"}, module = "idcard_scan", view = "show", id = member_id, params = { scan_type = "id_picture" } }
+        ui.image{ attr={class="idcard_scan spaceline3"}, module = "auditor", view = "idcard_show", id = member_id, params = { scan_type = "id_picture" } }
         ui.field.image{ field_name = "id_picture", label = _"Idcard picture scan" }
-        ui.image{ attr={class="idcard_scan spaceline3"}, module = "idcard_scan", view = "show", id = member_id, params = { scan_type = "nin" } }
+        ui.image{ attr={class="idcard_scan spaceline3"}, module = "auditor", view = "idcard_show", id = member_id, params = { scan_type = "nin" } }
         ui.field.image{ field_name = "nin", label = _"NIN card scan" }
-        ui.image{ attr={class="idcard_scan spaceline3"}, module = "idcard_scan", view = "show", id = member_id, params = { scan_type = "health_insurance" } }
+        ui.image{ attr={class="idcard_scan spaceline3"}, module = "auditor", view = "idcard_show", id = member_id, params = { scan_type = "health_insurance" } }
         ui.field.image{ field_name = "health_insurance", label = _"Health Insurance card scan" }
 
         ui.container{ attr = { class = "row-fluid text-center spaceline2" }, content = function()

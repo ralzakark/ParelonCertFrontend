@@ -54,6 +54,7 @@ local firstname = param.get("firstname")
 if firstname then
   if #firstname >=2 then
     member.firstname = firstname
+    member_data.firstname = firstname
   else
     slot.put_into("error", _"User first name is too short!")
     return false
@@ -70,6 +71,7 @@ local lastname = param.get("lastname")
 if lastname then
   if #lastname >=2 then
     member.lastname = lastname
+    member_data.lastname = lastname
   else
     slot.put_into("error", _"User last name is too short!")
     return false
@@ -84,7 +86,6 @@ end
 -- Building name and realname field
 if firstname and lastname then
   member.realname = firstname.." "..lastname
-  member.name = firstname
 end
 
 -- Check user nin
@@ -95,25 +96,13 @@ if nin then
     return false
   end
   member.nin = string.upper(nin)
+  member_data.nin = string.upper(nin)
 else
   if not member.nin then
     slot.put_into("error", _"User NIN cannot be empty!")
     return false
   end
 end
-
--- Check user unit_group_id
---[[
-local unit_group_id = param.get("unit_group_id",atom.integer)
-if unit_group_id then
-  member.unit_group_id = unit_group_id
-else
-  if not member.unit_group_id then
-    slot.put_into("error", _"User unit cannot be empty!")
-    return false
-  end
-end
---]]
 
 --[[
   Sensitive data 
