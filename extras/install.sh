@@ -1,18 +1,13 @@
 #/bin/bash
 
-FRONTENDSRC=/opt/ParlamentoElettronicoM5S
-CORESRC=/opt/ParlamentoElettronicoM5SCore
-WEBMCPSRC=/opt/ParlamentoElettronicoM5S/extras/webmcp
+FRONTENDSRC=/opt/ParelonCertFrontend
+WEBMCPSRC=/opt/ParelonCertFrontend/extras/webmcp
 FRONTENDDST=/opt/liquid_feedback_frontend
-COREDST=/opt/liquid_feedback_core
 WEBMCPDST=/opt/webmcp
 HELPDIR=${FRONTENDDST}/locale/help/
 ROCKETWIKICMD=/opt/rocketwiki-lqfb/rocketwiki-lqfb
-CONFIGFILE=/opt/ParlamentoElettronicoM5S/extras/myconfig.lua
-INITFILE=/opt/ParlamentoElettronicoM5S/extras/init.lua
-LFUPDATED=/opt/ParlamentoElettronicoM5S/extras/lf_updated
-INITSCRIPT=/opt/ParlamentoElettronicoM5S/extras/lf_updated.initrd
-NOTIFYD=/opt/ParlamentoElettronicoM5S/extras/start_notify.sh
+CONFIGFILE=/opt/ParelonCertFrontend/extras/myconfig.lua
+INITFILE=/opt/ParelonCertFrontend/extras/init.lua
 HTTPDUSER=www-data
 
 if [ "z$(id -u)" != "z0" ];then
@@ -44,28 +39,22 @@ fi
 
 if [ "z${auto}" == "zno" ];then
 	echo ""
-	echo "Ready to install ParlamentoElettronicoM5S"
+	echo "Ready to install ParelonCertFrontend"
 	echo "Please confirm installation parameters"
 	echo ""
 	echo "-------------------------------------------------------------------------"
 	echo -e "Frontend source: \t${FRONTENDSRC}"
-	echo -e "Core source: \t\t${CORESRC}"
 	echo -e "WebMCP source: \t\t${WEBMCPSRC}"
 	echo -e "Frontend destination: \t${FRONTENDDST}"
-	echo -e "Core destination: \t${COREDST}"
 	echo -e "WebMCP destination: \t${WEBMCPDST}"
 	echo -e "Rocketwiki binary: \t${ROCKETWIKICMD}"
 	echo -e "Configuration file: \t${CONFIGFILE}"
 	echo -e "Init file: \t${INITFILE}"
-	echo -e "lf_updated script: \t${LFUPDATED}"
-	echo -e "notifyd script: \t${NOTIFYD}"
 	echo -e "Web server user: \t${HTTPDUSER}"
 	echo "-------------------------------------------------------------------------"
 	echo ""
 	echo "Please review the following scripts before continuing:"
-	echo "     * ${LFUPDATED}"
 	echo "     * ${INITSCRIPT}"
-	echo "     * ${NOTIFYD}"
 	echo ""
 	echo -n "Proceed with installation? [y/n]: "
 	read answer
@@ -83,12 +72,6 @@ fi
 
 if ! [ -d "${FRONTENDSRC}" ]; then
         echo "Missing frontend installation source ${FRONTENDSRC}"
-	echo "Installation failed!"
-        exit 1
-fi
-
-if ! [ -d "${CORESRC}" ]; then
-        echo "Missing core installation source ${CORESRC}"
 	echo "Installation failed!"
         exit 1
 fi
@@ -125,14 +108,6 @@ if ! [ -d "${FRONTENDDST}" ]; then
 	exit 1
 fi	
 
-rm -rf ${COREDST}  2>/dev/null
-mkdir -p ${COREDST} 
-if ! [ -d "${COREDST}" ]; then
-	echo "Unable to create directory ${COREDST}"
-	echo "Installation failed!"
-	exit 1
-fi	
-
 rm -rf ${WEBMCPDST} 2>/dev/null
 mkdir -p ${WEBMCPDST}
 if ! [ -d "${WEBMCPDST}" ]; then
@@ -148,9 +123,6 @@ cp ${FRONTENDSRC}/config/init.lua ${FRONTENDDST}/config/
 
 echo "Changing ownership of tmp directory..."
 chown ${HTTPDUSER} ${FRONTENDDST}/tmp
-
-echo "Installing Core..."
-cp -a ${CORESRC}/* ${COREDST} 
 
 echo "Installing configuration file..."
 cp ${CONFIGFILE} ${FRONTENDDST}/config/ 
@@ -177,27 +149,6 @@ cd ${COREDST}
 make clean
 make
 cd -
-
-echo "Installing lf_update and lf_update_suggestion deamon script..."
-chmod +x ${LFUPDATED}
-cp ${LFUPDATED} ${COREDST}
-
-echo "Installing inittrd script into /etc/init.d..."
-chmod +x ${INITSCRIPT}
-cp ${INITSCRIPT} /etc/init.d/lf_updated
-
-echo "Activating daemon..."
-update-rc.d-insserv lf_updated defaults
-
-echo "Restarting update daemon..."
-/etc/init.d/lf_updated restart
-
-echo "Starting notifyd..."
-echo "Starting lf_notifyd (send_notification_loop)..."
-sleep 2
-
-${NOTIFYD} 
-rm nohup.out 2>/dev/null
 
 echo "Cleaining..."
 cd ${WEBMCPSRC}
