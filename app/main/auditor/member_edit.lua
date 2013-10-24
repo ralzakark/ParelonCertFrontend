@@ -302,21 +302,52 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
           name = "domicile_postcode",
           value = param.get("domicile_postcode")
         }
-        local unit_group_selector = UnitGroup:new_selector()
-        unit_group_selector:add_where("name LIKE 'Comune di %'")
-        unit_group_selector:add_order_by('name')
-        unit_groups=unit_group_selector:exec()
         
-        ui.field.select{
-          label = _"Unit",
-          name = "unit_group_id",
-          foreign_records = unit_groups,
-          foreign_id = 'id',
-          foreign_name = 'name',
-          attr={class="auditor_input"},
-          selected_record = param.get("unit_group_id",atom.integer),
-          label_attr={class="auditor_input_label"}
-        }
+        regions=db:query("SELECT nome_regione,codice_regione FROM istat_regioni ORDER BY nome_regione;")
+        provinces=db:query("SELECT nome_provincia,codice_provincia,codice_regione FROM istat_province ORDER BY nome_provincia;")
+        cities=db:query("SELECT nome_comune,codice_provincia,codice_comune FROM istat_comuni ORDER BY nome_comune;")
+        ui.script{static = "js/jquery.chained.js" }
+
+        local location={}
+        if member_data.location then
+          for v in  string.gmatch(member_data.location, "[^%s]+") do
+            location[] = v
+          end
+        end
+        slot.put_into('notice',location[1])
+        
+        slot.put('<div>')  
+        slot.put('<label for="regions" class="auditor_input_label">Regione</label>')  
+        slot.put('<select id ="regions" name="regions" class="auditor_input">')  
+        slot.put('<option value="">--</option>')  
+        for k,region in ipairs(regions) do
+          slot.put('<option value="'..region.codice_regione..'">'..region.nome_regione..'</option>')
+        end
+        slot.put('</select>')  
+        slot.put('</div>')  
+
+        slot.put('<div>')
+        slot.put('<label for="provinces" class="auditor_input_label">Provincia</label>')
+        slot.put('<select id ="provinces" name="provinces" class="auditor_input">')
+        slot.put('<option value="">--</option>')  
+        for k,province in ipairs(provinces) do
+          slot.put('<option value="'..province.codice_provincia..'" class="'..province.codice_regione..'">'..province.nome_provincia..'</option>')
+        end
+        slot.put('</select>')
+        slot.put('</div>')
+        
+        slot.put('<div>')
+        slot.put('<label for="cities" class="auditor_input_label">Comune</label>')
+        slot.put('<select id ="cities" name="cities" class="auditor_input">')
+        slot.put('<option value="">--</option>')
+        for k,city in ipairs(cities) do
+          slot.put('<option value="'..city.codice_comune..'" class="'..city.codice_provincia..'">'..city.nome_comune..'</option>')
+        end
+        slot.put('</select>')
+        slot.put('</div>')
+
+        ui.script{script = '$("#provinces").chained("#regions");' }
+        ui.script{script = '$("#cities").chained("#provinces");' }
 
         ui.container{ attr = { class = "row-fluid text-center spaceline2" }, content = function()
           ui.container{ attr = { class = "span6 offset3" }, content = function()
@@ -329,6 +360,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
             }
           end }
         end }
+
       end
     }
   end }

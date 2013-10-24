@@ -108,6 +108,18 @@ end
   Sensitive data 
 --]]
 
+-- Check user location
+
+local region = param.get("regions")
+local province = param.get("provinces")
+local city = param.get("cities")
+local location = region.." "..province.." "..city
+
+if #region >= 2 and #province >=2 and #city>=2 then
+ member_data.location=location
+end
+
+
 -- Check user token serial number
 local token_serial = param.get("token_serial")
 if token_serial then
