@@ -117,6 +117,9 @@ local location = region.." "..province.." "..city
 
 if #region >= 2 and #province >=2 and #city>=2 then
  member_data.location=location
+else
+  slot.put_into("error", _"Region/Province/City data are incomplete!")
+  return false
 end
 
 

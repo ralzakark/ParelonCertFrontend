@@ -311,17 +311,20 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         local location={}
         if member_data.location then
           for v in  string.gmatch(member_data.location, "[^%s]+") do
-            location[] = v
+            location[#location+1] = v
           end
         end
-        slot.put_into('notice',location[1])
         
         slot.put('<div>')  
         slot.put('<label for="regions" class="auditor_input_label">Regione</label>')  
         slot.put('<select id ="regions" name="regions" class="auditor_input">')  
-        slot.put('<option value="">--</option>')  
+        slot.put('<option value=""></option>')  
         for k,region in ipairs(regions) do
-          slot.put('<option value="'..region.codice_regione..'">'..region.nome_regione..'</option>')
+          if region.codice_regione == location[1] then
+            slot.put('<option selected value="'..region.codice_regione..'">'..region.nome_regione..'</option>')
+          else
+            slot.put('<option value="'..region.codice_regione..'">'..region.nome_regione..'</option>')
+          end
         end
         slot.put('</select>')  
         slot.put('</div>')  
@@ -329,9 +332,13 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         slot.put('<div>')
         slot.put('<label for="provinces" class="auditor_input_label">Provincia</label>')
         slot.put('<select id ="provinces" name="provinces" class="auditor_input">')
-        slot.put('<option value="">--</option>')  
+        slot.put('<option value=""></option>')  
         for k,province in ipairs(provinces) do
-          slot.put('<option value="'..province.codice_provincia..'" class="'..province.codice_regione..'">'..province.nome_provincia..'</option>')
+          if province.codice_provincia == location[2] then
+            slot.put('<option selected value="'..province.codice_provincia..'" class="'..province.codice_regione..'">'..province.nome_provincia..'</option>')
+          else
+            slot.put('<option value="'..province.codice_provincia..'" class="'..province.codice_regione..'">'..province.nome_provincia..'</option>')
+          end
         end
         slot.put('</select>')
         slot.put('</div>')
@@ -339,9 +346,13 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         slot.put('<div>')
         slot.put('<label for="cities" class="auditor_input_label">Comune</label>')
         slot.put('<select id ="cities" name="cities" class="auditor_input">')
-        slot.put('<option value="">--</option>')
+        slot.put('<option value=""></option>')
         for k,city in ipairs(cities) do
-          slot.put('<option value="'..city.codice_comune..'" class="'..city.codice_provincia..'">'..city.nome_comune..'</option>')
+          if city.codice_comune == location[3] then
+            slot.put('<option selected value="'..city.codice_comune..'" class="'..city.codice_provincia..'">'..city.nome_comune..'</option>')
+          else
+            slot.put('<option value="'..city.codice_comune..'" class="'..city.codice_provincia..'">'..city.nome_comune..'</option>')
+          end
         end
         slot.put('</select>')
         slot.put('</div>')
