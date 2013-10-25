@@ -154,9 +154,16 @@ else
   end
 end
 
-local birthdate = atom.date:new{year=param.get("birthyear",atom.integer), month=param.get("birthmonth",atom.integer), day=param.get("birthday",atom.integer)}
-if birthdate then
+local year=param.get("birthyear",atom.integer)
+local month=param.get("birthmonth",atom.integer)
+local day=param.get("birthday",atom.integer)
+
+local birthdate = atom.date:new{year=year, month=month, day=day}
+if birthdate and year >1900 and day <=31 and month <=12 then
   member_data.birthdate = birthdate
+else
+  slot.put_into("error", _"Birthdate is invalid!")
+  return false
 end
 
 -- Check user id card number

@@ -31,6 +31,7 @@ return {
 ["Personal data"]="Dati personali";
 ["Token serial"]="Seriale del token";
 ["Duplicate NIN value found in the database. User already registered."]="Codice Fiscale duplicato trovato nel database. L'utente &egrave gi&agrave registrato!";
+["Birthdate is invalid!"]="La data di nascita non e' valida";
 ["Duplicate Id Card Number value found in the database. User already registered."]="Numero del Documento duplicato trovato nel database. L'utente &egrave gi&agrave registrato!";
 ["Duplicate Token Serial value found in the database. User already registered."]="Seriale del Token duplicato trovato nel database. L'utente &egrave gi&agrave registrato!";
 ["Region/Province/City data are incomplete!"]="Le informazioni sulla regione, la provincia o il comune sono incomplete!";

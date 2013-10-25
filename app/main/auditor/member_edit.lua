@@ -232,7 +232,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         --[[ 
           Residence
         --]]
-        ui.heading{ level = 2, attr = { class = "text-center"  }, content = _"Residence" }
+        ui.heading{ level = 2, attr = { class = "text-center  spaceline3"  }, content = _"Residence" }
         ui.field.text{
           record = member_data,
           label_attr={class="auditor_input_label"},
@@ -269,7 +269,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         --[[ 
           Domicile
         --]]
-        ui.heading{ level = 2, attr = { class = "text-center"  }, content = _"Domicile" }
+        ui.heading{ level = 2, attr = { class = "text-center  spaceline3"  }, content = _"Domicile" }
         ui.field.text{
           record = member_data,
           label_attr={class="auditor_input_label"},
@@ -303,17 +303,26 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
           value = param.get("domicile_postcode")
         }
         
-        regions=db:query("SELECT nome_regione,codice_regione FROM istat_regioni ORDER BY nome_regione;")
-        provinces=db:query("SELECT nome_provincia,codice_provincia,codice_regione FROM istat_province ORDER BY nome_provincia;")
-        cities=db:query("SELECT nome_comune,codice_provincia,codice_comune FROM istat_comuni ORDER BY nome_comune;")
+        local regions = param.get("regions")
+        local provinces = param.get("provinces")
+        local cities = param.get("cities")
+
+        if #regions ~= 2 or #provinces ~=3 or cities ~= 6 then 
+          regions=db:query("SELECT nome_regione,codice_regione FROM istat_regioni ORDER BY nome_regione;") 
+          provinces=db:query("SELECT nome_provincia,codice_provincia,codice_regione FROM istat_province ORDER BY nome_provincia;")
+          cities=db:query("SELECT nome_comune,codice_provincia,codice_comune FROM istat_comuni ORDER BY nome_comune;")
+        end
+
         ui.script{static = "js/jquery.chained.js" }
 
         local location={}
-        if member_data.location then
+        if member_data and member_data.location then
           for v in  string.gmatch(member_data.location, "[^%s]+") do
             location[#location+1] = v
           end
         end
+
+        ui.heading{ level = 2, attr = { class = "text-center spaceline3"  }, content = _"Unit" }
         
         slot.put('<div>')  
         slot.put('<label for="regions" class="auditor_input_label">Regione</label>')  
