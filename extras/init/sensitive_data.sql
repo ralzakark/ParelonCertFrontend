@@ -15,6 +15,7 @@ CREATE TABLE "member_data" (
         "domicile_city"         TEXT            NOT NULL,
         "domicile_province"     TEXT            NOT NULL,
         "domicile_postcode"     TEXT            NOT NULL,
+        "location"              TEXT            NOT NULL,
         "rsa_public_key"        BYTEA,
         "certification_level"   INTEGER NOT NULL DEFAULT 0,
         "token_serial"          TEXT            NOT NULL UNIQUE);

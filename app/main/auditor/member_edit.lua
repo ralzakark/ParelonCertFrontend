@@ -307,9 +307,13 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         local provinces = param.get("provinces")
         local cities = param.get("cities")
 
-        if #regions ~= 2 or #provinces ~=3 or cities ~= 6 then 
+        if regions ~= 2 then 
           regions=db:query("SELECT nome_regione,codice_regione FROM istat_regioni ORDER BY nome_regione;") 
+        end
+        if provinces ~=3 then 
           provinces=db:query("SELECT nome_provincia,codice_provincia,codice_regione FROM istat_province ORDER BY nome_provincia;")
+        end
+        if cities ~= 6 then 
           cities=db:query("SELECT nome_comune,codice_provincia,codice_comune FROM istat_comuni ORDER BY nome_comune;")
         end
 
