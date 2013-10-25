@@ -29,6 +29,7 @@ return {
 ["Residence"]="Residenza";
 ["Domicile"]="Domicilio";
 ["Personal data"]="Dati personali";
+["(Password must be at least 32 characters long)"]="(La password deve essere di almeno 32 caratteri)";
 ["Token serial"]="Seriale del token";
 ["Duplicate NIN value found in the database. User already registered."]="Codice Fiscale duplicato trovato nel database. L'utente &egrave gi&agrave registrato!";
 ["Birthdate is invalid!"]="La data di nascita non e' valida";
@@ -514,6 +515,7 @@ return {
 ["Login"] = "Accedi";
 ["Login name"] = "Login";
 ["Logout"] = "Uscita";
+["Download Data"]="Scarica dati";
 ["Logout successful"] = "Utente disconnesso";
 ["Manage filter"] = "Gestisci filtro";
 ["Manage timeline filters"] = "Gestisci filtri cronologia";
@@ -1026,10 +1028,10 @@ return {
 ["User token serial number cannot be empty!"]="Il Seriale del Token dell'utente non pu&ograve essere vuoto!";
 ["User unit cannot be empty!"]="L'unit&agrave di residenza dell'utente non pu&ograve essere vuota!";
 ["User NIN cannot be empty!"]="Il Codice Fiscale dell'utente non pu&ograve essere vuoto!";
-["User last name is too short!"]="Il Nome dell'utente &egrave troppo corto!";
-["User last name cannot be empty!"]="Il Nome dell'utente non pu&ograve essere vuoto!";
-["User first name is too short!"]="Il Cognome dell'utente &egrave troppo corto!";
-["User first name cannot be empty!"]="Il Cognome dell'utente non pu&ograve essere vuoto!";
+["User last name is too short!"]="Il cognome dell'utente &egrave troppo corto!";
+["User last name cannot be empty!"]="Il cognome dell'utente non pu&ograve essere vuoto!";
+["User first name is too short!"]="Il nome dell'utente &egrave troppo corto!";
+["User first name cannot be empty!"]="Il nome dell'utente non pu&ograve essere vuoto!";
 ["This National Insurance Number is already used by someone else! Please contact the system administrator."] = "Questo Codice Fiscale e' gia' utilizzato!";
 ["NIN"] = "Codice Fiscale";
 ["xmpp"] = "XMPP(Jabber)";

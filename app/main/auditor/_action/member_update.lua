@@ -108,20 +108,6 @@ end
   Sensitive data 
 --]]
 
--- Check user location
-
-local region = param.get("regions")
-local province = param.get("provinces")
-local city = param.get("cities")
-
-if region and province and city and #region >= 2 and #province >=2 and #city>=2 then
- member_data.location=region.." "..province.." "..city
-else
-  slot.put_into("error", _"Region/Province/City data are incomplete!")
-  return false
-end
-
-
 -- Check user token serial number
 local token_serial = param.get("token_serial")
 if token_serial then
@@ -200,21 +186,13 @@ end
 
 -- Check user residence data
 local residence_address = param.get("residence_address")
-if residence_address then
-  member_data.residence_address = residence_address
-end
+member_data.residence_address = residence_address
 local residence_city = param.get("residence_city")
-if residence_city then
-  member_data.residence_city = residence_city
-end
+member_data.residence_city = residence_city
 local residence_province = param.get("residence_province")
-if residence_province then
-  member_data.residence_province = residence_province
-end
+member_data.residence_province = residence_province
 local residence_postcode = param.get("residence_postcode")
-if residence_postcode then
-  member_data.residence_postcode = residence_postcode
-end
+member_data.residence_postcode = residence_postcode
 
 if #residence_address < 6 or #residence_city < 2 or #residence_province == 0 or #residence_postcode < 4 then
     slot.put_into("error", _"User residence data missing or incomplete!")
@@ -223,25 +201,30 @@ end
 
 -- Check user domicile data
 local domicile_address = param.get("domicile_address")
-if domicile_address then
-  member_data.domicile_address = domicile_address
-end
+member_data.domicile_address = domicile_address
 local domicile_city = param.get("domicile_city")
-if domicile_city then
-  member_data.domicile_city = domicile_city
-end
+member_data.domicile_city = domicile_city
 local domicile_province = param.get("domicile_province")
-if domicile_province then
-  member_data.domicile_province = domicile_province
-end
+member_data.domicile_province = domicile_province
 local domicile_postcode = param.get("domicile_postcode")
-if domicile_postcode then
-  member_data.domicile_postcode = domicile_postcode
-end
+member_data.domicile_postcode = domicile_postcode
 
 if #domicile_address < 6 or #domicile_city < 2 or #domicile_province ==0 or #domicile_postcode < 4 then
     slot.put_into("error", _"User domicile data missing or incomplete!")
     return false
+end
+
+-- Check user location
+
+local region = param.get("regions")
+local province = param.get("provinces")
+local city = param.get("cities")
+
+if region and province and city and #region >= 2 and #province >=2 and #city>=2 then
+ member_data.location=region.." "..province.." "..city
+else
+  slot.put_into("error", _"Region/Province/City data are incomplete!")
+  return false
 end
 
 -- Saving

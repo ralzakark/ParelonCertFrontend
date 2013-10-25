@@ -15,7 +15,7 @@ ui.container{ attr = { class = "row-fluid" }, content = function()
           module = "auditor",
           view = "download",
           content = function()
-            ui.heading{level=5,attr={class=""},content="Download Data"}
+            ui.heading{level=5,attr={class=""},content=_"Download Data"}
           end
         }
       end }

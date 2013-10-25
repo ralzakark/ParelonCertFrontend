@@ -12,7 +12,7 @@ if new_password1 ~= new_password2 then
   return false
 end
 
-if #new_password1 < 8 then
+if #new_password1 < 32 then
   slot.put_into("error", _"New passwords is too short.")
   return false
 end
