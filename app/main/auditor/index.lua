@@ -32,6 +32,16 @@ ui.container{ attr = { class = "row-fluid" }, content = function()
       ui.container{ attr = { class  = "inline-block" , style = "margin: 5px;" }, content = function()
         ui.link{
           attr = { class="btn btn-primary btn-large table-cell fixclick"  },
+          module = "member",
+          view = "settings_password",
+          content = function()
+            ui.heading{level=5,attr={class=""},content=_"Change password"}
+          end
+        }
+      end }
+      ui.container{ attr = { class  = "inline-block" , style = "margin: 5px;" }, content = function()
+        ui.link{
+          attr = { class="btn btn-primary btn-large table-cell fixclick"  },
           module = "index",
           action = "logout",
           content = function()
