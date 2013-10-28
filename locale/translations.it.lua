@@ -50,6 +50,11 @@ return {
 ["ID card number"]="Numero documento";
 ["Actions"]="Azioni";
 ["State"]="Stato";
+["Idcard scan"]="Scan documento";
+["Insurance card scan"]="Scan codice fiscale o tessera sanitaria";
+["User pic scan"]="Scan foto utente";
+["Unit of residence"]="Unita' di residenza";
+["Registration date"]="Data di registrazione";
 ["Auditor login"]="Login certificatore";
 ["Auditor Panel"]="Pannello Certificatore";
 ["Procedures"]="Procedure";
