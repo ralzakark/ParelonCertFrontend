@@ -52,6 +52,18 @@ return {
 ["State"]="Stato";
 ["Auditor login"]="Login certificatore";
 ["Auditor Panel"]="Pannello Certificatore";
+["Procedures"]="Procedure";
+["Generate a new password"]="Genera nuova password";
+["Disable account"]="Disattiva account";
+["Send email with activation code"]="Invia email con codice di attivazione";
+["Activate account without email invitation"]="Attiva account senza spedire email di invito";
+["Broken token substitution"]="Sostituzione token difettoso";
+["Dead battery token substitution"]="Sostituizione token con batterie scariche";
+["Lost or stolen token substitution"]="Sostituizione token smarrito o rubato";
+["Token block and account cancellation"]="Blocco token e cancellazione account";
+["Print new user registration modules"]="Stampa moduli di registrazione nuovo utente";
+["Print token substiution or cancellation modules"]="Stampa moduli di sostituzione token o cancellazione";
+["You selected the following user:"]="Hai selezionato il seguente utente:";
 ["There are no users certified by you"]="Non si sono utenti certificati da te";
 ["Your certified users"]="I tuoi utenti certificati";
 ["Auditor?"]="Certificatore?";
@@ -179,6 +191,8 @@ return {
 ["Access level"] = "Livello di accesso";
 ["Activate account"] = "Attiva utente";
 ["Active?"] = "Attivo?";
+["ACTIVE"]="ATTIVO";
+["INACTIVE"]="INATTIVO";
 ["Add alternative initiative to issue"] = "Aggiungi una proposta alternativa alla questione";
 ["Add my interest"] = "Aggiungi interesse alla questione";
 ["Add new suggestion"] = "Aggiungi nuovo suggerimento";
