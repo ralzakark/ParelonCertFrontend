@@ -58,6 +58,7 @@ return {
 ["Auditor login"]="Login certificatore";
 ["Auditor Panel"]="Pannello Certificatore";
 ["Procedures"]="Procedure";
+["Select the action you want to execute:"]="Seleziona la procedura che vuoi eseguire:";
 ["Generate a new password"]="Genera nuova password";
 ["Disable account"]="Disattiva account";
 ["Send email with activation code"]="Invia email con codice di attivazione";
@@ -659,6 +660,7 @@ return {
 ["Password reset request"] = "Richiesta reimpostazione password";
 ["Passwords don't match!"] = "Le password non corrispondono!";
 ["Passwords must consist of at least 8 characters!"] = "Le password devono contenere almeno 8 caratteri!";
+["Passwords must consist of at least 32 characters!"] = "Le password devono contenere almeno 32 caratteri!";
 ["Phases"] = "Fasi";
 ["Phone"] = "Telefono";
 ["Photo"] = "Foto";

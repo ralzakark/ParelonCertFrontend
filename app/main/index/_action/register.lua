@@ -46,6 +46,7 @@ end
 
 local name = util.trim(param.get("name"))
 
+--[[
 if not config.locked_profile_fields.name and name then
 
   if #name < 3 then
@@ -96,6 +97,7 @@ if notify_email and not member.name then
   }
   return false
 end
+--]]
 
 
 local login = util.trim(param.get("login"))
@@ -187,8 +189,8 @@ if step > 2 then
     return false
   end
 
-  if #password1 < 8 then
-    slot.put_into("error", _"Passwords must consist of at least 8 characters!")
+  if #password1 < 32 then
+    slot.put_into("error", _"Passwords must consist of at least 32 characters!")
     return false
   end
 

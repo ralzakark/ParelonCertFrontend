@@ -83,6 +83,16 @@ ui.container{ attr = { class = "row-fluid" }, content = function()
           "<td style='border: 2px solid black; background: #feffe9; padding: 5px'>".."NO".."</td>",
           "<td style='border: 2px solid black; background: #f2ebb7; padding: 5px'>".."NO".."</td>",
         "</tr>",
+        "<tr>",
+        "<td></td>",
+        "<td></td>",
+        "<td></td>",
+        "<td></td>",
+        "<td></td>",
+        "<td></td>",
+        "<td></td>",
+        "<td colspan='3' ><small>(tutte e tre le scansioni dei documenti devono essere state inserite per poter eseguire le procedure)</small></td>",
+        "</tr>",
          
 
         "</table>")
@@ -95,6 +105,9 @@ end }
 ui.container{ attr = { class = "row-fluid" }, content = function()
   ui.container{ attr = { class = "span12 well" }, content = function()
     ui.container{ attr = { class = "row-fluid text-center" }, content = function()
+      ui.heading{ level = 1, attr = { class = "span8 offset2 uppercase"  }, content = _"Select the action you want to execute:" }
+    end }
+    ui.container{ attr = { class = "row-fluid text-center spaceline2" }, content = function()
       ui.link{
         attr = { class="btn btn-primary proc_btn fixclick"  },
         module = "auditor",
