@@ -63,7 +63,7 @@ config.gui_preset = {
 
 -- A rocketwiki formatted text the user has to accept while registering
 -- ------------------------------------------------------------------------
-config.use_terms = "=== Terms of Use ==="
+config.use_terms = "=== Termini di Utilizzo ==="
 
 
 -- Checkbox(es) the user has to accept while registering
@@ -71,14 +71,9 @@ config.use_terms = "=== Terms of Use ==="
 config.use_terms_checkboxes = {
   {
     name = "terms_of_use_v1",
-    html = "I accept the terms of use.",
-    not_accepted_error = "You have to accept the terms of use to be able to register."
-  },
---  {
---    name = "extra_terms_of_use_v1",
---    html = "I accept the extra terms of use.",
---    not_accepted_error = "You have to accept the extra terms of use to be able to register."
---  }
+    html = "Accetto i termini di utilizzo",
+    not_accepted_error = "Devi accettare i termini di utilizzo per registrarti."
+  }
 }
 
   
