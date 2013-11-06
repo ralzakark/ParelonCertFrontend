@@ -8,6 +8,8 @@ if member and member.certifier_id ~= app.session.member_id then
   return false
 end
 
+ui.script{static = "js/jquery.validate.js" }
+
 local confirm_box1 = param.get("confirm_box1",atom.boolean)
 local confirm_box2 = param.get("confirm_box2",atom.boolean)
 local confirm_box3 = param.get("confirm_box3",atom.boolean)
@@ -131,6 +133,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
   ui.container{ attr = { class = "span12 alert alert-simple issue_box paper"}, content = function()
     ui.form{
       module = "auditor",
+      attr={id="member-form", class="form-horizontal"},
       action = "member_update",
       id = member and member.id,
       readonly = not app.session.member.auditor,
@@ -142,6 +145,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         }
       },
       content = function()
+
         ui.field.hidden{name="confirm_box1", value=confirm_box1 or false}
         ui.field.hidden{name="confirm_box2", value=confirm_box2 or false}
         ui.field.hidden{name="confirm_box3", value=confirm_box3 or false}
@@ -151,9 +155,13 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.hidden{name="confirm_box7", value=confirm_box7 or false}
 
         ui.heading{ level = 2, attr = { class = "text-center"  }, content = _"Personal data" }
+        --ui.container{ attr = { class = "text-center uppercase"  }, legend=_"Personal data", content=function()
+
         ui.field.text{ 
           record = member,
+          --label_attr={class="control-label auditor_input_label"},
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",placeholder=_"Name"},
           label=_"Name", 
           name = "firstname",
@@ -162,6 +170,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.text{ 
           record = member,
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",placeholder=_"Surname"}, 
           label = _"Surname", 
           name = "lastname",
@@ -170,6 +179,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.text{ 
           record = member,
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",maxlength="16",placeholder=_"NIN"}, 
           label = _"NIN", 
           name = "nin", 
@@ -178,6 +188,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.text{ 
           record = member_data,
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",placeholder="email@example.org"}, 
           label = _"Email", 
           name = "email", 
@@ -186,6 +197,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.text{ 
           record = member_data,
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",placeholder=_"City"}, 
           label = _"Birthplace", 
           name = "birthplace", 
@@ -193,6 +205,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         }
         ui.field.text{
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input", maxlength="4", placeholder=_"yyyy"},
           label = _"Year of birth",
           name = "birthyear",
@@ -200,6 +213,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         }
         ui.field.text{
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input", maxlength="2", placeholder=_"mm"},
           label = _"Month of birth",
           name = "birthmonth",
@@ -207,6 +221,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         }
         ui.field.text{
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input", maxlength="2", placeholder=_"dd"},
           label = _"Day of birth",
           name = "birthday",
@@ -215,6 +230,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.text{
           record = member_data,
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",placeholder=_"ID card number"},
           label = _"ID card number",
           name = "idcard",
@@ -223,11 +239,14 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.text{
           record = member_data,
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",placeholder=_"Token Serial"},
           label = _"Token serial",
           name = "token_serial",
           value = param.get("token_serial")
         }
+     
+        --end }
 
         --[[ 
           Residence
@@ -236,6 +255,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.text{
           record = member_data,
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",placeholder=_"Residence address"},
           label = _"Residence address",
           name = "residence_address",
@@ -244,6 +264,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.text{
           record = member_data,
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",placeholder=_"Residence city"},
           label = _"Residence city",
           name = "residence_city",
@@ -252,6 +273,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.text{
           record = member_data,
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",placeholder=_"Residence province"},
           label = _"Residence province",
           name = "residence_province",
@@ -260,6 +282,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.text{
           record = member_data,
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",placeholder=_"Residence postcode"},
           label = _"Residence postcode",
           name = "residence_postcode",
@@ -273,6 +296,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.text{
           record = member_data,
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",placeholder=_"Domicile address"},
           label = _"Domicile address",
           name = "domicile_address",
@@ -281,6 +305,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.text{
           record = member_data,
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",placeholder=_"Domicile city"},
           label = _"Domicile city",
           name = "domicile_city",
@@ -289,6 +314,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.text{
           record = member_data,
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",placeholder=_"Domicile province"},
           label = _"Domicile province",
           name = "domicile_province",
@@ -297,6 +323,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         ui.field.text{
           record = member_data,
           label_attr={class="auditor_input_label"},
+          container_attr={class="control-group"},
           attr={class="auditor_input",placeholder=_"Domicile postcode"},
           label = _"Domicile postcode",
           name = "domicile_postcode",
@@ -328,7 +355,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
 
         ui.heading{ level = 2, attr = { class = "text-center spaceline3"  }, content = _"Unit" }
         
-        slot.put('<div>')  
+        slot.put('<div class="control-group">')  
         slot.put('<label for="regions" class="auditor_input_label">Regione</label>')  
         slot.put('<select id ="regions" name="regions" class="auditor_input">')  
         slot.put('<option value=""></option>')  
@@ -342,7 +369,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         slot.put('</select>')  
         slot.put('</div>')  
 
-        slot.put('<div>')
+        slot.put('<div class="control-group">')
         slot.put('<label for="provinces" class="auditor_input_label">Provincia</label>')
         slot.put('<select id ="provinces" name="provinces" class="auditor_input">')
         slot.put('<option value=""></option>')  
@@ -356,7 +383,7 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
         slot.put('</select>')
         slot.put('</div>')
         
-        slot.put('<div>')
+        slot.put('<div class="control-group">')
         slot.put('<label for="cities" class="auditor_input_label">Comune</label>')
         slot.put('<select id ="cities" name="cities" class="auditor_input">')
         slot.put('<option value=""></option>')
@@ -384,6 +411,8 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
             }
           end }
         end }
+
+        ui.script{static="js/jquery.validate_memeber_edit.js"}
 
       end
     }
