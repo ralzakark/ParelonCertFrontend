@@ -161,7 +161,7 @@ CREATE FUNCTION nin_insert_trigger()
        IF length (NEW.nin) = 16 OR NEW.nin ISNULL THEN
 		RETURN NEW;
 	ELSE
-		RAISE EXCEPTION 'Wrong lenght';
+		RAISE EXCEPTION 'Wrong lenght for national insurance number';
       END IF;
       RETURN NULL;
    END;
