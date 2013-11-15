@@ -32,7 +32,7 @@ slot.select('navbar', function()
                     class = "micro_avatar",
                   }
                 }
-                slot.put("&nbsp;"..app.session.member.name )
+                slot.put("&nbsp;"..app.session.member.realname )
               else
                 --ui.tag{ tag ="i" , attr = { class = "iconic black flag" }, content=""}
                 slot.put("&nbsp;".. _"Select language" )

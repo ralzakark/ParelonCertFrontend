@@ -134,12 +134,12 @@ CREATE TABLE "member" (
 	"elected"		BOOLEAN,
 	"auditor"		BOOLEAN,
 	"lqfb_access"		BOOLEAN,
-	"unit_group_id"  	INT4,
         "external_memberships"  TEXT,
         "external_posts"        TEXT,
         "formatting_engine"     TEXT,
         "statement"             TEXT,
         "text_search_data"      TSVECTOR,
+	"root_auditor"		BOOLEAN,
         CONSTRAINT "active_requires_activated_and_last_activity"
           CHECK ("active" = FALSE OR ("activated" NOTNULL AND "last_activity" NOTNULL)),
         CONSTRAINT "name_not_null_if_activated"
@@ -214,7 +214,6 @@ COMMENT ON COLUMN "member"."external_memberships" IS 'Other organizations the me
 COMMENT ON COLUMN "member"."external_posts"       IS 'Posts (offices) outside the organization';
 COMMENT ON COLUMN "member"."formatting_engine"    IS 'Allows different formatting engines (i.e. wiki formats) to be used for "member"."statement"';
 COMMENT ON COLUMN "member"."statement"            IS 'Freely chosen text of the member for his/her profile';
-COMMENT ON COLUMN "member"."unit_group_id"        IS 'ID of city of location of residence';
 
 
 -- DEPRECATED API TABLES --

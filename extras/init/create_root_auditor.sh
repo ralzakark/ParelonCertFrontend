@@ -37,9 +37,10 @@ login=`randomLogin6`
 echo "Please insert root auditor data"
 echo
 echo -n "Firstname: "; read firstname
-echo -n "Secondaname: "; read secondname
+echo -n "Lastname: "; read lastname
 echo -n "National Insurance Number: "; read nin
 echo -n "Email: "; read email
+echo -n "Birthplace: "; read birthplace
 echo -n "Birthdate (dd/mm/yyyy): "; read birthdate
 echo -n "Id Card Number: "; read idcard
 echo -n "Residence Address: "; read residence_address
@@ -53,10 +54,11 @@ echo -n "Domicile Postcode: "; read domicile_postcode
 echo -n "Unit Location (xx xxx xxxxxx): "; read location
 echo -n "Token Serial Number: "; read token_serial
 
-result=`echo "INSERT INTO member (login, realname, invite_code, nin, notify_email, lqfb_access, auditor) VALUES ('${login}', '${firstname} ${secondname}','${invite_code}', '${nin}', '${email}', FALSE, TRUE) RETURNING id;" |${psql_cmd} -xq ${db_name}`
+result=`echo "INSERT INTO member (login, realname, firstname, lastname, invite_code, nin, notify_email, lqfb_access, auditor, certified, certifier_id, root_auditor) VALUES ('${login}', '${firstname} ${lastname}', '${firstname}', '${lastname}', '${invite_code}', '${nin}', '${email}', FALSE, TRUE, 'now()', (select last_value from member_id_seq), TRUE) RETURNING id;" |${psql_cmd} -xq ${db_name}`
 
 id=`echo ${result}|grep id|awk -F'|' '{print $2}'|sed -e 's/ //g'`
-result=`echo "INSERT INTO member_data (firstname, secondname, nin, email, birthdate, idcard, residence_address, residence_city, residence_province, residence_postcode, domicile_address, domicile_city, domicile_province, domicile_postcode, location, token_serial) VALUES ('${firstname}', '${secondname}', '${nin}', '${email}','${birthdate}','${idcard}','${residence_address}','${residence_city}','${residence_province}','${residence_postcode}','${domicile_address}','${domicile_city}','${domicile_province}','${domicile_postcode}', '${location}', '${token_serial}') RETURNING id;" |${psql_cmd} -xq ${secure_db_name}`
+
+result=`echo "INSERT INTO member_data (id, firstname, lastname, nin, email, birthplace, birthdate, idcard, residence_address, residence_city, residence_province, residence_postcode, domicile_address, domicile_city, domicile_province, domicile_postcode, location, token_serial ) VALUES ('${id}', '${firstname}', '${lastname}', '${nin}', '${email}','${birthplace}', '${birthdate}','${idcard}','${residence_address}','${residence_city}','${residence_province}','${residence_postcode}','${domicile_address}','${domicile_city}','${domicile_province}','${domicile_postcode}', '${location}', '${token_serial}') RETURNING id;" |${psql_cmd} -xq ${secure_db_name}`
 
 echo
 echo "User ID: ${id}"
