@@ -23,54 +23,6 @@ ui.container{ attr = { class = "row-fluid" }, content = function()
       end }
     end }
 
-    --[
-    ui.container{ attr = { class = "row-fluid text-center spaceline3" }, content = function()
-
-      ui.container{ attr = { class  = "inline-block", style = "margin: 5px;" }, content = function()
-        ui.link{
-          attr = { class="btn btn-primary btn-large table-cell"  },
-          module = "auditor",
-          view = "download",
-          content = function()
-            ui.heading{level=5,attr={class=""},content=_"Download Data"}
-          end
-        }
-      end }
-      ui.container{ attr = { class  = "inline-block" , style = "margin: 5px;" }, content = function()
-        ui.link{
-          attr = { class="btn btn-primary btn-large table-cell fixclick"  },
-          module = "auditor",
-          view = "member_edit",
-          content = function()
-            ui.heading{level=5,attr={class=""},content=_"Nuovo utente"}
-          end
-        }
-      end }
-      ui.container{ attr = { class  = "inline-block" , style = "margin: 5px;" }, content = function()
-        ui.link{
-          attr = { class="btn btn-primary btn-large table-cell fixclick"  },
-          module = "member",
-          view = "settings_password",
-          content = function()
-            ui.heading{level=5,attr={class=""},content=_"Change password"}
-          end
-        }
-      end }
-      ui.container{ attr = { class  = "inline-block" , style = "margin: 5px;" }, content = function()
-        ui.link{
-          attr = { class="btn btn-primary btn-large table-cell fixclick"  },
-          module = "index",
-          action = "logout",
-          content = function()
-            ui.heading{level=5,attr={class=""},content=_"Logout"}
-          end
-        }
-      end }
-
-    end }
-
-    --]]
-
   end }
 end }
 
@@ -83,25 +35,144 @@ ui.container{ attr = { class = "row-fluid spaceline2" }, content = function()
       end }
     end }
 
-    ui.container{ attr = { class = "row-fluid" }, content = function()
-      ui.container{ attr = { class = "span12"}, content = function()
-        ui.container{ attr = { class  = "inline-block" , style = "margin: 5px;" }, content = function()
+    ui.container{ attr = { class = "row-fluid spaceline3" }, content = function()
+      ui.container{ attr = { class = "span6 text-center"}, content = function()
+
+        ui.container{ attr = { class  = "inline-block" , style = "" }, content = function()
           ui.link{
-            attr = { class="btn btn-primary btn-large table-cell fixclick"  },
+            attr = { class="btn btn-primary btn-large table-cell fixclick menu_btn"  },
             module = "auditor",
             view = "member_edit",
             content = function()
-              ui.image{static = "svg/print_new_user_modules_icon.svg"}
-              ui.heading{level=5,attr={class=""},content=_"Nuovo utente"}
+              ui.container{ attr = { class = "row-fluid" }, content = function()
+                ui.container{ attr = { class = "span4"}, content = function()
+                  ui.image{attr={class="svg_icon"}, static = "svg/print_new_user_modules_icon.svg"}
+                end }
+                ui.container{ attr = { class = "span7 offset1 table-cell"}, content = function()
+                  ui.heading{level=4,attr={class="offset1 uppercase"},content=_"Certifica nuovo utente"}
+                end }
+              end }
             end
           }
         end }
+
+      end }
+      ui.container{ attr = { class = "span6 text-center"}, content = function()
+
+        ui.container{ attr = { class  = "inline-block" , style = "" }, content = function()
+          ui.link{
+            attr = { class="btn btn-primary btn-large table-cell fixclick menu_btn"  },
+            module = "auditor",
+            view = "member_edit",
+            content = function()
+              ui.container{ attr = { class = "row-fluid" }, content = function()
+                ui.container{ attr = { class = "span7"}, content = function()
+                  ui.heading{level=4,attr={class="uppercase"},content=_"Gestisci la lista dei tuoi utenti"}
+                end }
+                ui.container{ attr = { class = "span4 offset1"}, content = function()
+                  ui.image{attr={class="svg_icon"}, static = "svg/deactivate_account_icon.svg"}
+                end }
+              end }
+            end
+          }
+        end }
+
       end }
     end }
 
-    ui.container{ attr = { class = "row-fluid" }, content = function()
+    ui.container{ attr = { class = "row-fluid spaceline3" }, content = function()
+      ui.container{ attr = { class = "span6 text-center"}, content = function()
+
+        ui.container{ attr = { class  = "inline-block" , style = "" }, content = function()
+          ui.link{
+            attr = { class="btn btn-primary btn-large table-cell fixclick menu_btn"  },
+            module = "member",
+            view = "settings_password",
+            content = function()
+              ui.container{ attr = { class = "row-fluid" }, content = function()
+                ui.container{ attr = { class = "span4"}, content = function()
+                  ui.image{attr={class="svg_icon"}, static = "svg/password_icon.svg"}
+                end }
+                ui.container{ attr = { class = "span7 offset1"}, content = function()
+                  ui.heading{level=4,attr={class="uppercase"},content=_"Cambia la password di certificatore"}
+                end }
+              end }
+            end
+          }
+        end }
+
+      end }
+      ui.container{ attr = { class = "span6 text-center"}, content = function()
+
+        ui.container{ attr = { class  = "inline-block" , style = "" }, content = function()
+          ui.link{
+            attr = { class="btn btn-primary btn-large table-cell fixclick menu_btn"  },
+            module = "index",
+            view = "logout",
+            content = function()
+              ui.container{ attr = { class = "row-fluid" }, content = function()
+                ui.container{ attr = { class = "span7"}, content = function()
+                  ui.heading{level=4,attr={class="uppercase"},content=_"Esci dal pannello certificatore"}
+                end }
+                ui.container{ attr = { class = "span4 offset1"}, content = function()
+                  ui.image{attr={class="svg_icon"}, static = "svg/deactivate_account_icon.svg"}
+                end }
+              end }
+            end
+          }
+        end }
+
+      end }
+    end }
+
+    ui.container{ attr = { class = "row-fluid spaceline3" }, content = function()
       ui.container{ attr = { class = "span6 offset3"}, content = function()
         ui.heading{ level = 2, attr = { class = "uppercase"  }, content = _"Service functions:" }
+      end }
+    end }
+
+    ui.container{ attr = { class = "row-fluid spaceline3" }, content = function()
+      ui.container{ attr = { class = "span6 text-center"}, content = function()
+
+        ui.container{ attr = { class  = "inline-block" , style = "" }, content = function()
+          ui.link{
+            attr = { class="btn btn-primary btn-large table-cell fixclick menu_btn"  },
+            module = "member",
+            view = "settings_password",
+            content = function()
+              ui.container{ attr = { class = "row-fluid" }, content = function()
+                ui.container{ attr = { class = "span4"}, content = function()
+                  ui.image{attr={class="svg_icon"}, static = "svg/print_new_user_modules_icon.svg"}
+                end }
+                ui.container{ attr = { class = "span7 offset1"}, content = function()
+                  ui.heading{level=6,attr={class="uppercase"},content=_"Stampa moduli registrazione nuovo utente"}
+                end }
+              end }
+            end
+          }
+        end }
+
+      end }
+      ui.container{ attr = { class = "span6 text-center"}, content = function()
+
+        ui.container{ attr = { class  = "inline-block" , style = "" }, content = function()
+          ui.link{
+            attr = { class="btn btn-primary btn-large table-cell fixclick menu_btn"  },
+            module = "index",
+            view = "logout",
+            content = function()
+              ui.container{ attr = { class = "row-fluid" }, content = function()
+                ui.container{ attr = { class = "span7"}, content = function()
+                  ui.heading{level=6,attr={class="uppercase"},content=_"Stampa moduli registrazione nuovo certificatore"}
+                end }
+                ui.container{ attr = { class = "span4 offset1"}, content = function()
+                  ui.image{attr={class="svg_icon"}, static = "svg/print_new_certificator_modules_icon.svg"}
+                end }
+              end }
+            end
+          }
+        end }
+
       end }
     end }
 

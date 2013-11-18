@@ -58,6 +58,7 @@ return {
 ["Auditor login"]="Login certificatore";
 ["Auditor Panel"]="Pannello Certificatore";
 ["Welcome <strong>#{firstname} #{lastname}</strong>, your ID is <strong>C#{id}</strong>"]="Benvenuto <strong>#{firstname} #{lastname}</strong>, il tuo ID &egrave <strong>C#{id}</strong>";
+["Service functions:"]="Funzioni di servizio:";
 ["Procedures"]="Procedure";
 ["Select the action you want to execute:"]="Seleziona la procedura che vuoi eseguire:";
 ["Generate a new password"]="Genera nuova password";
@@ -73,6 +74,7 @@ return {
 ["You selected the following user:"]="Hai selezionato il seguente utente:";
 ["There are no users certified by you"]="Non si sono utenti certificati da te";
 ["Your certified users"]="I tuoi utenti certificati";
+["Please choose one of the following:"]="Scegli una delle seguenti opzioni:";
 ["Auditor?"]="Certificatore?";
 ["Birthplace"]="Luogo di nascita";
 ["Birthdate"]="Data di nascita";
