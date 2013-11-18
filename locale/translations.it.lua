@@ -57,6 +57,7 @@ return {
 ["Registration date"]="Data di registrazione";
 ["Auditor login"]="Login certificatore";
 ["Auditor Panel"]="Pannello Certificatore";
+["Welcome <strong>#{firstname} #{lastname}</strong>, your ID is <strong>C#{id}</strong>"]="Benvenuto <strong>#{firstname} #{lastname}</strong>, il tuo ID &egrave <strong>C#{id}</strong>";
 ["Procedures"]="Procedure";
 ["Select the action you want to execute:"]="Seleziona la procedura che vuoi eseguire:";
 ["Generate a new password"]="Genera nuova password";
